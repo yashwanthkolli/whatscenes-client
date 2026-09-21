@@ -82,7 +82,7 @@ export default function ProfileMenu() {
         aria-haspopup="menu"
         onClick={() => setOpen((value) => !value)}
       >
-        <Menu className="profile-menu__icon" />
+        <Menu className="profile-menu__icon profile-menu__hamburger" />
       </Button>
 
       {open && (

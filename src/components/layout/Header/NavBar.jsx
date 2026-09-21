@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button"
 
 import NavLinks from "./NavLinks"
 import ProfileMenu from "./ProfileMenu"
+import MobileNav from "./MobileNav"
 
 import Logo from "@/assets/logoFull.png"
 
@@ -19,32 +20,44 @@ export default function NavBar() {
   if (isBootstrapping) return null
 
   return (
-    <Container>
-      <div className="navbar">
-        <Link to="/app" className="navbar__logo" aria-label="Whatscenes">
-          <span
-            className="navbar__wordmark"
-            style={{
-              WebkitMaskImage: `url(${Logo})`,
-              maskImage: `url(${Logo})`,
-            }}
-          />
-        </Link>
+    <>
+      <Container>
+        <div className="navbar">
+          <Link to="/app" className="navbar__logo" aria-label="Whatscenes">
+            <span
+              className="navbar__wordmark"
+              style={{
+                WebkitMaskImage: `url(${Logo})`,
+                maskImage: `url(${Logo})`,
+              }}
+            />
+          </Link>
 
-        <NavLinks />
+          <NavLinks />
 
-        <div className="navbar__actions">
-          <LocationSwitcher />
+          <div className="navbar__actions">
+            <LocationSwitcher />
 
-          {isAuthenticated ? (
-            <ProfileMenu />
-          ) : (
-            <Button as={Link} to="/auth/login" variant="primary" size="sm">
-              Login
-            </Button>
-          )}
+            <div className="navbar__desktop-profile">
+              {isAuthenticated ? (
+                <ProfileMenu />
+              ) : (
+                <Button
+                  className="profile-menu__login-button"
+                  as={Link}
+                  to="/auth/login"
+                  variant="primary"
+                  size="sm"
+                >
+                  Login
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+
+      <MobileNav />
+    </>
   )
 }

@@ -243,3 +243,53 @@
     outline-offset: 4px;
   }
 }
+
+// ─────────────────────────────────────────────
+// Mobile location switcher
+// ─────────────────────────────────────────────
+
+@media (max-width: 700px) {
+  .button--location {
+    min-height: 28px;
+
+    gap: 4px;
+
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .button--location .location-switcher__dot {
+    width: 4px;
+    height: 4px;
+
+    flex-basis: 4px;
+
+    margin-right: 4px;
+  }
+
+  .button--location .location-switcher__status {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 420px) {
+  .button--location {
+    gap: 3px;
+
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+  }
+
+  .button--location .location-switcher__dot {
+    width: 4px;
+    height: 4px;
+
+    flex-basis: 4px;
+
+    margin-right: 3px;
+  }
+
+  .button--location .location-switcher__status {
+    font-size: 8.5px;
+  }
+}
