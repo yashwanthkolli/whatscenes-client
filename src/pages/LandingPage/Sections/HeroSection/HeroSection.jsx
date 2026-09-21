@@ -1298,6 +1298,7 @@ export default function HeroSection() {
          */
         gsap.set(cityWorldRef.current, {
           opacity: 1 - heroOut,
+          "--heroOut": heroOut,
         })
 
         /*
@@ -1626,15 +1627,17 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-later-world hero-later-world--mobile" ref={mobileLaterWorldRef}>
-          <div className="hero-later-world__dot" />
-          <img className="hero-later-world__dot-trail" src="/assets/L/dot.png" alt="" />
-          <div className="hero-later-world__trail">
-            <img src="/assets/L/trail.png" alt="" />
+          <div className="hero-later-world__mobile-content">
+            <div className="hero-later-world__dot" />
+            <img className="hero-later-world__dot-trail" src="/assets/L/dot.png" alt="" />
+            <div className="hero-later-world__trail">
+              <img src="/assets/L/trail.png" alt="" />
+            </div>
+            {LATER_FIGURES_MOBILE.map((figure) => (
+              <LaterFigure key={figure.id} figure={figure} />
+            ))}
+            <HostFigure />
           </div>
-          {LATER_FIGURES_MOBILE.map((figure) => (
-            <LaterFigure key={figure.id} figure={figure} />
-          ))}
-          <HostFigure />
         </div>
 
         <div ref={finalTextRef} className="hero-story-text hero-story-text--c3">

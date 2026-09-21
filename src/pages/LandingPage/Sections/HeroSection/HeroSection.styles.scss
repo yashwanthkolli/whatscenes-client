@@ -76,31 +76,32 @@
 
   z-index: 2;
 
+  background-image: url("/assets/city2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   transform: scale(var(--desktopSceneScale));
 
   transform-origin: center center;
 
-  will-change: opacity;
+  will-change: opacity, transform;
 }
-
-/*
- * Exact city dimensions from prototype.
- */
 
 .hero-city-world__image {
   position: absolute;
 
-  left: 0;
-  top: 0;
+  inset: 0;
 
   display: block;
 
-  width: 1536px;
-  height: 864px;
+  width: 100%;
+  height: 100%;
 
   max-width: none;
 
   object-fit: cover;
+  object-position: center;
 
   user-select: none;
   pointer-events: none;
@@ -686,53 +687,70 @@
 }
 
 @media (max-width: 700px) {
-  .hero-section {
+  .landing-hero-section {
     height: 860vh;
   }
 
+  /*
+   * The mobile prototype does NOT use the desktop 1536 x 864
+   * city composition. The mobile artwork fills the viewport
+   * directly and uses city-mobile.png.
+   */
   .hero-city-world {
-    /*
-     * Mobile prototype uses the 900 x 1440 world.
-     *
-     * The city itself remains behind the people composition.
-     */
-    width: 900px;
-    height: 1440px;
+    left: 0;
+    top: 0;
 
-    margin-left: -450px;
-    margin-top: -720px;
+    width: 100%;
+    height: 100%;
 
-    transform: scale(var(--mobileSceneScale));
+    margin: 0;
+
+    background-image: url("/assets/city-mobile.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transform: scale(calc(1 + var(--heroOut, 0) * 0.05));
+    transform-origin: center center;
+
+    overflow: hidden;
   }
 
   .hero-city-world__image {
-    width: 900px;
-    height: 1440px;
-
-    object-fit: cover;
+    display: none;
   }
 
-  /*
-   * Mobile prototype text is inside the 900 x 1440 world.
-   */
-
+  /* Exact mobile prototype headline treatment. */
   .hero-city-world__headline {
-    left: 52px;
-    top: 150px;
+    left: 0;
+    top: 15vh;
 
-    width: 796px;
+    width: 100%;
+    padding: 0 32px;
 
-    font-size: 58px;
+    box-sizing: border-box;
 
-    line-height: 1.05;
+    font-size: min(9.4vw, 44px);
+    line-height: 0.96;
   }
 
   .hero-city-world__text-shadow {
-    left: 52px;
-    top: 75px;
+    left: -12%;
+    top: 9vh;
 
-    width: 796px;
-    height: 360px;
+    width: 124%;
+    height: 34vh;
+  }
+
+  .hero-section__top-gradient {
+    height: 48%;
+
+    background: linear-gradient(
+      180deg,
+      rgba(8, 13, 26, 0.34) 0%,
+      rgba(8, 13, 26, 0.16) 40%,
+      rgba(8, 13, 26, 0) 100%
+    );
   }
 
   .hero-people-world--desktop {
@@ -1102,39 +1120,63 @@
 }
 
 @media (max-width: 700px) {
+  /*
+   * The prototype uses the same 900 x 1440 mobile world for
+   * the later text and scene. The text is scaled with the world
+   * so its effective size is much smaller on a phone while the
+   * desktop typography remains untouched.
+   */
   .hero-story-text--c2,
   .hero-story-text--c2b {
-    left: 50%;
-    top: 50%;
+    left: calc(52px * var(--mobilePeopleScale));
+    top: calc(1200px * var(--mobilePeopleScale));
+
     width: 800px;
-    margin-left: -398px;
-    margin-top: clamp(300px, calc(50vh - 320px), 400px);
+    margin: 0;
+
     font-size: 58px;
     line-height: 1.2;
+    letter-spacing: -0.035em;
+
+    transform-origin: 0 0;
+    scale: var(--mobilePeopleScale);
   }
 
   .hero-story-text--c2b {
-    margin-top: clamp(335px, calc(50vh - 285px), 435px);
+    top: calc(1175px * var(--mobilePeopleScale));
   }
 
-  .hero-story-text--c3,
-  .hero-story-text--c4 {
-    left: 50%;
-    top: 50%;
+  .hero-story-text--c3 {
+    left: calc(52px * var(--mobilePeopleScale));
+    top: calc(210px * var(--mobilePeopleScale));
+
     width: 800px;
-    margin-left: -398px;
-    margin-top: -510px;
+    margin: 0;
+
     font-size: 58px;
     line-height: 1.2;
+    letter-spacing: -0.032em;
+
+    transform-origin: 0 0;
+    scale: var(--mobilePeopleScale);
   }
 
   .hero-story-text--c4 {
-    margin-top: 455px;
+    left: calc(52px * var(--mobilePeopleScale));
+    top: calc(1275px * var(--mobilePeopleScale));
+
     width: 760px;
+    margin: 0;
+
     font-family: Archivo, sans-serif;
     font-size: 44px;
     font-weight: 700;
     line-height: 1.26;
+    letter-spacing: -0.028em;
+    text-wrap: pretty;
+
+    transform-origin: 0 0;
+    scale: var(--mobilePeopleScale);
   }
 
   .hero-later-world--desktop {
@@ -1143,11 +1185,31 @@
 
   .hero-later-world--mobile {
     display: block;
+
     width: 900px;
     height: 1440px;
+
     margin-left: -450px;
     margin-top: -720px;
+
     transform: scale(var(--mobilePeopleScale));
+  }
+
+  /*
+   * Exact mobile later-scene group from the prototype:
+   * 1057 x 650, positioned at 52px / 613px and scaled .753.
+   */
+  .hero-later-world__mobile-content {
+    position: absolute;
+
+    left: 52px;
+    top: 613px;
+
+    width: 1057px;
+    height: 650px;
+
+    transform: scale(0.753);
+    transform-origin: 0 0;
   }
 
   .hero-later-world--mobile .hero-later-world__dot {
@@ -1162,12 +1224,16 @@
   }
 
   .hero-later-world--mobile .hero-later-world__trail {
+    position: absolute;
+    left: 0;
+    top: 0;
+
     width: 1057px;
     height: 650px;
-    left: 52px;
-    top: 613px;
+
     right: auto;
     bottom: auto;
+
     -webkit-mask-image: radial-gradient(
       circle 1150px at 144.5px 561.5px,
       #000 calc(var(--draw, 0) * 113% - 13%),
