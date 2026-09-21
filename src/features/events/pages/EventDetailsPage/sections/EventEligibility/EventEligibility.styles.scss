@@ -1,0 +1,10 @@
+.event-eligibility {
+  padding: $space-8;
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    text-transform: capitalize;
+  }
+}

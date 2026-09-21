@@ -1,0 +1,264 @@
+@use "@/styles" as *;
+
+.location-selection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.location-selection__intro {
+  margin: 0 0 28px;
+  max-width: 520px;
+
+  color: rgba(21, 16, 14, 0.62);
+  font-family: $font-family-primary;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* =========================
+   CURRENT LOCATION
+========================= */
+
+.location-selection__detect {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  padding: 18px 16px;
+
+  border: 1px solid rgba(21, 16, 14, 0.18);
+  border-radius: 10px;
+
+  background: transparent;
+  color: #15100e;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 120ms ease;
+
+  &:hover:not(:disabled) {
+    border-color: #ff003f;
+    background: rgba(255, 0, 63, 0.035);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.99);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff003f;
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.location-selection__detect-icon {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #ff003f;
+  color: #fff;
+}
+
+.location-selection__detect-content {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  margin-left: 14px;
+}
+
+.location-selection__detect-title {
+  color: #15100e;
+
+  font-family: $font-family-primary;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.location-selection__detect-description {
+  margin-top: 4px;
+
+  color: rgba(21, 16, 14, 0.52);
+
+  font-family: $font-family-primary;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.location-selection__arrow {
+  flex: 0 0 auto;
+
+  margin-left: auto;
+
+  color: rgba(21, 16, 14, 0.38);
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.location-selection__detect:hover:not(:disabled) .location-selection__arrow,
+.location-selection__city:hover:not(:disabled) .location-selection__arrow {
+  color: #ff003f;
+  transform: translateX(3px);
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.location-selection__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 28px 0;
+
+  color: rgba(21, 16, 14, 0.42);
+}
+
+.location-selection__divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(21, 16, 14, 0.12);
+}
+
+.location-selection__divider em {
+  flex: 0 0 auto;
+
+  font-family: $font-family-primary;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* =========================
+   CITIES
+========================= */
+
+.location-selection__cities {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid rgba(21, 16, 14, 0.12);
+}
+
+.location-selection__city {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 64px;
+  padding: 0 4px;
+
+  border: 0;
+  border-bottom: 1px solid rgba(21, 16, 14, 0.12);
+
+  background: transparent;
+  color: #15100e;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    color 160ms ease,
+    padding 160ms ease;
+
+  &:hover:not(:disabled) {
+    padding-left: 10px;
+    color: #ff003f;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff003f;
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.location-selection__city-name {
+  font-family: $font-family-primary;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.location-selection__city .location-selection__arrow {
+  color: rgba(21, 16, 14, 0.28);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .location-selection__intro {
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+
+  .location-selection__detect {
+    padding: 15px 13px;
+  }
+
+  .location-selection__detect-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .location-selection__detect-title {
+    font-size: 14px;
+  }
+
+  .location-selection__detect-description {
+    font-size: 12px;
+  }
+
+  .location-selection__divider {
+    margin: 24px 0;
+  }
+
+  .location-selection__city {
+    min-height: 58px;
+  }
+
+  .location-selection__city-name {
+    font-size: 16px;
+  }
+}

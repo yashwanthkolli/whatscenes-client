@@ -1,0 +1,41 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+
+  cursor: pointer;
+
+  &__input {
+    display: none;
+  }
+
+  &__box {
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+
+    background: $color-surface;
+
+    position: relative;
+
+    @include transition-colors;
+  }
+
+  &__input:checked + &__box {
+    background: $color-primary;
+    border-color: $color-primary;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+  }
+
+  &.is-error {
+    .checkbox__box {
+      border-color: $color-error;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+.cta-section {
+
+  padding-top: $space-24;
+  padding-bottom: $space-24;
+
+}
+
+.cta-box {
+
+  position: relative;
+
+  padding: $space-12;
+
+  text-align: center;
+
+  border-radius: $radius-2xl;
+
+  border: 1px solid $color-border;
+
+  background: $color-surface-elevated;
+
+  overflow: hidden;
+
+}
+
+/* Gradient glow */
+
+.cta-box::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -1px;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(167,139,250,0.18),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(249,115,22,0.18),
+      transparent 50%
+    );
+
+  z-index: 0;
+
+}
+
+.cta-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title {
+
+  font-size: $font-size-3xl;
+
+  font-weight: $font-weight-bold;
+
+}
+
+.cta-subtitle {
+
+  margin-top: $space-3;
+
+  font-size: $font-size-md;
+
+  color: $color-text-secondary;
+
+}
+
+.cta-actions {
+
+  margin-top: $space-6;
+
+}

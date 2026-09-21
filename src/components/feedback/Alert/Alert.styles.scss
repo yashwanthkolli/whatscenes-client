@@ -1,0 +1,27 @@
+.alert {
+  padding: $space-3 $space-4;
+
+  border-radius: $radius-md;
+
+  font-size: $font-size-sm;
+
+  &--error {
+    background: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+
+  &--success {
+    background: rgba($color-success, 0.1);
+    color: $color-success;
+  }
+
+  &--info {
+    background: rgba($color-primary, 0.1);
+    color: $color-primary;
+  }
+
+  &--warning {
+    background: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+}

@@ -1,0 +1,134 @@
+.profile-picture-uploader {
+  width: 100%;
+}
+
+.profile-picture-uploader__tile {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  aspect-ratio: 3 / 4;
+
+  padding: 0;
+  overflow: hidden;
+
+  border: 1px solid rgba(21, 16, 14, 0.16);
+  border-radius: 12px;
+
+  background: $color-secondary;
+  color: #15100e;
+
+  cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    background-color 160ms ease;
+
+  &:hover:not(:disabled) {
+    border-color: rgba(255, 0, 63, 0.55);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.985);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff003f;
+    outline-offset: 4px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.profile-picture-uploader__tile--filled {
+  border-color: transparent;
+  background: #15100e;
+
+  &:hover:not(:disabled) {
+    border-color: transparent;
+  }
+}
+
+.profile-picture-uploader__image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.profile-picture-uploader__plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  background: #ff003f;
+  color: #ffffff;
+}
+
+.profile-picture-uploader__edit {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  background: #ff003f;
+  color: #ffffff;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.profile-picture-uploader__loading {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(244, 235, 229, 0.82);
+}
+
+.profile-picture-uploader__input {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .profile-picture-uploader__tile {
+    border-radius: 9px;
+  }
+
+  .profile-picture-uploader__plus {
+    width: 46px;
+    height: 46px;
+  }
+
+  .profile-picture-uploader__edit {
+    right: 8px;
+    bottom: 8px;
+
+    width: 32px;
+    height: 32px;
+  }
+}

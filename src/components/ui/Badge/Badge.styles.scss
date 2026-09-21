@@ -1,0 +1,59 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: $radius-full;
+
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+
+  /* Sizes */
+
+  &--sm {
+    padding: $space-1 $space-2;
+    font-size: $font-size-xs;
+  }
+
+  &--md {
+    padding: $space-2 $space-3;
+    font-size: $font-size-sm;
+  }
+
+  /* Variants */
+
+  &--primary {
+    background: rgba(99,102,241,0.15);
+    color: $color-primary;
+  }
+
+  &--success {
+    background: rgba(34,197,94,0.15);
+    color: $color-success;
+  }
+
+  &--warning {
+    background: rgba(245,158,11,0.15);
+    color: $color-warning;
+  }
+
+  &--danger {
+    background: rgba(239,68,68,0.15);
+    color: $color-error;
+  }
+
+  &--neutral {
+    background: $color-surface;
+    color: $color-text-secondary;
+  }
+
+  &--glass {
+    @include glass-surface-strong;
+    color: $color-primary;
+  }
+
+  &--ghost {
+    background: rgba(0,0,0,0.4);
+    color: $color-text-primary;
+  }
+}

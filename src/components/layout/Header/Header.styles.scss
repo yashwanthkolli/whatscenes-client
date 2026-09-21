@@ -1,0 +1,488 @@
+@use "@/styles" as *;
+
+.header {
+  width: 100%;
+  z-index: $z-header;
+
+  &--sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  &--default {
+    background: #f4ebe5;
+    border-bottom: 1px solid rgba(21, 16, 14, 0.12);
+  }
+
+  &--transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: transparent;
+    border-bottom: none;
+  }
+}
+
+.navbar {
+  width: 100%;
+  max-width: 1240px;
+
+  height: 68px;
+
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+
+  gap: 40px;
+
+  box-sizing: border-box;
+}
+
+// ─────────────────────────────────────────────
+// Logo
+// ─────────────────────────────────────────────
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  flex: 0 0 108px;
+
+  width: 108px;
+  height: 68px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__wordmark {
+  display: block;
+
+  width: 108px;
+  height: 18px;
+
+  flex: 0 0 108px;
+
+  object-fit: contain;
+  object-position: left center;
+
+  margin: 0;
+  padding: 0;
+
+  background: #ff003f;
+
+  -webkit-mask-position: left center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+
+  mask-position: left center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+// ─────────────────────────────────────────────
+// Navigation
+// ─────────────────────────────────────────────
+
+.nav-links {
+  display: flex;
+  align-items: stretch;
+
+  height: 100%;
+
+  gap: 30px;
+}
+
+.nav-links__link {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  white-space: nowrap;
+
+  font-family: $font-family-primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  color: #15100e;
+
+  box-shadow: inset 0 -2px 0 transparent;
+
+  transition:
+    color 160ms ease,
+    opacity 160ms ease,
+    box-shadow 160ms ease;
+
+  &:hover {
+    color: #15100e;
+    opacity: 0.62;
+  }
+
+  &--active {
+    box-shadow: inset 0 -2px 0 #ff003f;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #ff003f;
+    outline-offset: 4px;
+  }
+}
+
+// ─────────────────────────────────────────────
+// Right side
+// ─────────────────────────────────────────────
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-left: auto;
+
+  flex: 0 0 auto;
+}
+
+// ─────────────────────────────────────────────
+// Authenticated actions
+// ─────────────────────────────────────────────
+
+.profile-menu {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  margin: 0;
+}
+
+.profile-menu__button {
+  width: 36px;
+  height: 36px;
+
+  min-height: 36px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  color: $color-text-primary;
+
+  &:hover {
+    opacity: 0.55;
+  }
+}
+
+.profile-menu__icon {
+  display: block;
+
+  width: 19px;
+  height: 19px;
+}
+
+.profile-menu__hamburger {
+  display: flex;
+  flex-direction: column;
+
+  width: 27px;
+
+  gap: 8px;
+
+  span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: currentColor;
+
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+}
+
+.profile-menu__trigger--open {
+  .profile-menu__hamburger {
+    span:first-child {
+      transform: translateY(5px) rotate(45deg);
+    }
+
+    span:last-child {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+  }
+}
+
+.profile-menu__panel {
+  position: fixed;
+
+  top: 82px;
+  right: 24px;
+
+  width: 360px;
+
+  padding: 27px 27px 22px;
+
+  box-sizing: border-box;
+
+  background: $color-text-primary;
+  color: $color-background;
+
+  border-radius: 22px;
+
+  box-shadow: 0 22px 50px rgba($color-text-primary, 0.34);
+
+  z-index: $z-header + 10;
+
+  transform-origin: top right;
+
+  animation: profile-menu-in 160ms ease-out both;
+}
+
+@keyframes profile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-7px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Identity */
+
+.profile-menu__identity {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 25px;
+}
+
+.profile-menu__identity-copy {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.profile-menu__name {
+  font-size: 17px;
+  font-weight: $font-weight-bold;
+  line-height: 1.15;
+}
+
+.profile-menu__meta {
+  margin-top: 3px;
+
+  font-size: 13px;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+
+  color: rgba($color-background, 0.42);
+}
+
+/*
+ * The shared Avatar component normally uses the application
+ * surface/text colors. These overrides make it fit the dark
+ * prelaunch panel.
+ */
+.profile-menu__identity {
+  .avatar {
+    flex-shrink: 0;
+
+    background: $color-secondary;
+    color: $color-text-primary;
+  }
+}
+
+/* Navigation */
+
+.profile-menu__nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0;
+}
+
+.profile-menu__link {
+  display: flex;
+  align-items: center;
+
+  min-height: 50px;
+
+  font-size: 17px;
+  font-weight: $font-weight-semibold;
+  line-height: 1.2;
+
+  color: rgba($color-background, 0.92);
+
+  text-decoration: none;
+
+  transition:
+    color 150ms ease,
+    opacity 150ms ease;
+
+  @include hover {
+    color: $color-background;
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  &--active {
+    color: $color-background;
+  }
+}
+
+/* Divider */
+
+.profile-menu__divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 11px 0 4px;
+
+  background: rgba($color-background, 0.16);
+}
+
+/* Logout */
+
+.profile-menu__logout {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 45px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: $color-primary;
+
+  font: inherit;
+  font-size: 17px;
+  font-weight: $font-weight-semibold;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: opacity 150ms ease;
+
+  @include hover {
+    opacity: 0.75;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+// ─────────────────────────────────────────────
+// Login button
+// Prelaunch uses lime, pill-shaped actions.
+// ─────────────────────────────────────────────
+
+.navbar__actions > .button--primary {
+  min-height: 36px;
+
+  padding: 0 18px;
+
+  border-radius: $radius-full;
+
+  background: $color-primary;
+  color: #fff;
+
+  font-family: $font-family-primary;
+  font-size: $font-size-sm;
+  font-weight: 700;
+
+  letter-spacing: 0;
+
+  @include hover {
+    background: $color-primary-hover;
+  }
+}
+
+// ─────────────────────────────────────────────
+// Transparent variant
+// ─────────────────────────────────────────────
+
+.header--transparent {
+  .nav-links__link {
+    color: #fff;
+
+    &::after {
+      background: #c8cd02;
+    }
+
+    @include hover {
+      opacity: 0.72;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// Responsive
+// ─────────────────────────────────────────────
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 24px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    height: 64px;
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar__logo,
+  .navbar__wordmark {
+    width: 108px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar {
+    padding: 0 16px;
+  }
+}

@@ -1,0 +1,31 @@
+.live-events-section {
+  padding-top: $space-20;
+  padding-bottom: $space-20;
+}
+
+.live-events__list {
+  margin-top: $space-10;
+}
+
+.live-events__highlight {
+  position: relative;
+  margin-top: $space-10;
+  padding: $space-8;
+  border-radius: $radius-2xl;
+  border: 1px solid $color-border;
+  background: $color-surface-elevated;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: $gradient-primary;
+    z-index: 0;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}

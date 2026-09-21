@@ -1,0 +1,46 @@
+.my-events-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+
+  &__item {
+    min-height: 42px;
+    padding: 0 17px;
+
+    border: 1px solid rgba(21, 16, 14, 0.16);
+    border-radius: 999px;
+
+    background: transparent;
+    color: rgba(21, 16, 14, 0.58);
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+
+    &:hover {
+      border-color: rgba(21, 16, 14, 0.3);
+      color: #15100e;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #ff003f;
+      outline-offset: 3px;
+    }
+
+    &.is-active {
+      border-color: #15100e;
+      background: #15100e;
+      color: #f4ebe5;
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,332 @@
+.landing-cta {
+  background: #f4ebe5;
+  padding: 60px 40px;
+  color: #15100e;
+}
+
+.landing-cta__card {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 44px;
+  background: #c8cd02;
+  padding: 136px clamp(20px, 4vw, 48px) 146px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.landing-cta__city {
+  display: none;
+}
+
+.landing-cta h2 {
+  margin: 0;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: min(4.4vw, 74px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.landing-cta p {
+  margin: 0;
+  max-width: 32em;
+  font-size: clamp(25px, 1.9vw, 30px);
+  font-weight: 600;
+  line-height: 1.36;
+  letter-spacing: -0.018em;
+}
+
+.landing-cta__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+.landing-cta__primary,
+.landing-cta__secondary {
+  flex: none;
+  min-height: 62px;
+  box-sizing: border-box;
+  padding: 21px 38px;
+  border-radius: 999px;
+  background: #ff003f;
+  color: #fff;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.landing-cta__secondary {
+  border: none;
+  cursor: pointer;
+}
+
+.landing-cta__primary:hover,
+.landing-cta__secondary:hover {
+  opacity: 0.82;
+}
+
+.landing-how-it-works {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.landing-how-it-works__backdrop {
+  position: fixed;
+  inset: 0;
+  border: none;
+  background: rgba(21, 16, 14, 0.66);
+  cursor: default;
+}
+
+.landing-how-it-works__panel {
+  position: relative;
+  width: min(880px, 100%);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 52px clamp(24px, 4vw, 56px) 56px;
+  border-radius: 28px;
+  background: #f4ebe5;
+  color: #15100e;
+  animation: landing-how-it-works-rise 0.34s ease both;
+}
+
+.landing-how-it-works__close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(21, 16, 14, 0.18);
+  border-radius: 50%;
+  background: none;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.landing-how-it-works__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ff003f;
+}
+
+.landing-how-it-works h3 {
+  margin: 12px 0 0;
+  max-width: 650px;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.landing-how-it-works__steps {
+  margin-top: 30px;
+}
+
+.landing-how-it-works__step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(21, 16, 14, 0.13);
+}
+
+.landing-how-it-works__number {
+  padding-top: 3px;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: 14px;
+  color: #ff003f;
+}
+
+.landing-how-it-works__step h4 {
+  margin: 0;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.landing-how-it-works__step p {
+  margin: 6px 0 0;
+  max-width: 62ch;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(21, 16, 14, 0.66);
+}
+
+@keyframes landing-how-it-works-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .landing-cta {
+    padding: 0;
+    background: #15100e;
+    color: #f4ebe5;
+  }
+
+  .landing-cta__card {
+    border-radius: 0;
+    background: #15100e;
+    align-items: stretch;
+    gap: 0;
+    padding: 58px 22px 52px;
+    text-align: left;
+  }
+
+  .landing-cta__city {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(244, 235, 229, 0.42);
+  }
+
+  .landing-cta__city span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c8cd02;
+  }
+
+  .landing-cta h2 {
+    margin-top: 20px;
+    font-size: 40px;
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    white-space: normal;
+  }
+
+  .landing-cta p {
+    margin-top: 16px;
+    max-width: 30ch;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(244, 235, 229, 0.55);
+  }
+
+  .landing-cta__actions {
+    display: block;
+    padding-top: 0;
+  }
+
+  .landing-cta__primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 58px;
+    margin-top: 32px;
+    padding: 16px 20px;
+    background: #c8cd02;
+    color: #15100e;
+    font-size: 17px;
+  }
+
+  .landing-cta__secondary {
+    display: block;
+    min-height: auto;
+    margin: 20px auto 0;
+    padding: 6px 2px;
+    background: none;
+    color: rgba(244, 235, 229, 0.5);
+    font-family: Archivo, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .landing-how-it-works {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .landing-how-it-works__panel {
+    width: 100%;
+    max-width: 460px;
+    max-height: 92vh;
+    padding: 26px 20px 34px;
+    border-radius: 26px 26px 0 0;
+    animation-name: landing-how-it-works-sheet;
+  }
+
+  .landing-how-it-works__close {
+    width: 44px;
+    height: 44px;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+  }
+
+  .landing-how-it-works h3 {
+    max-width: 300px;
+    margin-top: 12px;
+    font-size: 26px;
+    line-height: 1.1;
+  }
+
+  .landing-how-it-works__steps {
+    margin-top: 24px;
+  }
+
+  .landing-how-it-works__step {
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .landing-how-it-works__step h4 {
+    font-size: 19px;
+  }
+
+  .landing-how-it-works__step p {
+    font-size: 16px;
+  }
+
+  @keyframes landing-how-it-works-sheet {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

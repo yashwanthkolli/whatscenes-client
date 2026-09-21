@@ -1,0 +1,35 @@
+@use "../tokens" as *;
+
+@mixin glass-surface {
+  background: $color-glass-bg;
+
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+
+  border: 1px solid $color-glass-border;
+
+  box-shadow: $glass-shadow;
+
+  border-radius: $radius-xl;
+}
+
+@mixin glass-surface-strong {
+  background: rgba(255,255,255,0.06);
+
+  backdrop-filter: blur($glass-blur-strong);
+  -webkit-backdrop-filter: blur($glass-blur-strong);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow: $shadow-xl;
+
+  border-radius: $radius-2xl;
+}
+
+@mixin glass-card {
+
+  @include glass-surface;
+
+  padding: $space-4;
+
+}

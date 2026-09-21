@@ -1,0 +1,19 @@
+.event-description {
+  padding: $space-8;
+
+  &__text {
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    opacity: 0.9;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    &.expanded {
+      -webkit-line-clamp: unset;
+      display: block;
+    }
+  }
+}

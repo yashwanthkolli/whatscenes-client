@@ -1,0 +1,1192 @@
+.landing-hero-section {
+  position: relative;
+
+  width: 100%;
+
+  /*
+   * Exact rendered prototype track.
+   */
+  height: 860vh;
+
+  background: #f4ebe5;
+}
+
+.hero-section__stage {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  /* The city fades away onto a clean white canvas before the dot/red transition. */
+  background: #f4ebe5;
+
+  --desktopPeopleScale: 1;
+  --desktopSceneScale: 1;
+
+  --mobilePeopleScale: 1;
+  --mobileSceneScale: 1;
+
+  --heroOut: 0;
+  --conv: 0;
+  --others: 0;
+  --c1: 1;
+  --hl: 1;
+}
+
+/* ============================================================
+   RED BACKGROUND
+   ============================================================ */
+
+.hero-section__red-background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background: #ff003f;
+
+  /*
+   * This is the base that becomes visible when the city layer
+   * leaves. The original prototype also uses a radial red
+   * reveal later in the story.
+   */
+  clip-path: circle(var(--hero-red-radius, 0px) at var(--hero-red-x, 50%) var(--hero-red-y, 50%));
+}
+
+/* ============================================================
+   CITY WORLD
+   ============================================================ */
+
+.hero-city-world {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 1536px;
+  height: 864px;
+
+  margin-left: -768px;
+  margin-top: -432px;
+
+  z-index: 2;
+
+  transform: scale(var(--desktopSceneScale));
+
+  transform-origin: center center;
+
+  will-change: opacity;
+}
+
+/*
+ * Exact city dimensions from prototype.
+ */
+
+.hero-city-world__image {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  display: block;
+
+  width: 1536px;
+  height: 864px;
+
+  max-width: none;
+
+  object-fit: cover;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ============================================================
+   TEXT SHADOW
+   ============================================================ */
+
+.hero-city-world__text-shadow {
+  position: absolute;
+
+  left: 268px;
+  top: 34px;
+
+  width: 1000px;
+  height: 400px;
+
+  /*
+   * Exact radial gradient from the prototype.
+   */
+  background: radial-gradient(
+    52% 52% at 50% 48%,
+    rgba(8, 13, 26, 0.56),
+    rgba(8, 13, 26, 0.28) 52%,
+    rgba(8, 13, 26, 0) 76%
+  );
+
+  opacity: calc(var(--c1) * 0.95);
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   HERO HEADLINE
+   ============================================================ */
+
+.hero-city-world__headline {
+  position: absolute;
+
+  /*
+   * Exact prototype coordinates.
+   */
+  left: 368px;
+  top: 126px;
+
+  width: 800px;
+
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  font-family: "Archivo Black", Archivo, "Helvetica Neue", Helvetica, sans-serif;
+
+  font-size: 86px;
+
+  line-height: 0.96;
+
+  letter-spacing: -0.035em;
+
+  text-wrap: balance;
+
+  /*
+   * Exact prototype shadow.
+   */
+  text-shadow:
+    0 1px 3px rgba(8, 13, 26, 0.5),
+    0 6px 30px rgba(8, 13, 26, 0.42);
+
+  opacity: var(--c1);
+
+  will-change: transform, opacity;
+
+  pointer-events: none;
+}
+
+.hero-city-world__headline span {
+  display: block;
+}
+
+.hero-section__top-gradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 210px;
+  z-index: 5;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 14, 26, 0.52),
+    rgba(9, 14, 26, 0.26) 46%,
+    rgba(9, 14, 26, 0)
+  );
+  pointer-events: none;
+}
+
+/* ============================================================
+   PEOPLE WORLD
+   ============================================================ */
+
+.hero-people-world {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  z-index: 10;
+
+  transform-origin: center center;
+
+  pointer-events: none;
+}
+
+/*
+ * Desktop prototype:
+ *
+ * data-world:
+ *   width: 1536px
+ *   height: 1024px
+ *   margin: -512px 0 0 -768px
+ *
+ * The people layer itself is scaled by .78.
+ */
+
+.hero-people-world--desktop {
+  width: 1536px;
+  height: 1024px;
+
+  margin-left: -768px;
+  margin-top: -512px;
+
+  --person-rise: 40px;
+  --person-drift: 26px;
+
+  transform: scale(var(--desktopPeopleScale));
+}
+
+.hero-people-world__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1536px;
+  height: 1024px;
+  transform: translate3d(0, -4px, 0) scale(0.78);
+  transform-origin: 50% 0;
+}
+
+/*
+ * We need the actual people to inherit the .78 scale.
+ *
+ * Rather than scaling each person individually, put the
+ * children into a transformed inner coordinate system.
+ *
+ * The React markup is flat, so this selector scales the whole
+ * world around its reference origin.
+ */
+
+.hero-people-world--desktop {
+  transform: scale(var(--desktopPeopleScale));
+
+  transform-origin: center center;
+}
+
+/* ============================================================
+   PEOPLE
+   ============================================================ */
+
+.hero-person {
+  /* The reference scales each person around its centre. This makes the
+     convergence point land exactly on the black dot. */
+  transform-origin: 50% 50%;
+
+  will-change: transform, opacity;
+}
+
+.hero-person img {
+  display: block;
+
+  max-width: none;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+/*
+ * Converging people.
+ */
+
+.hero-person[data-y="1"] {
+  transform: translate3d(
+      calc(var(--tx) * var(--conv, 0)),
+      calc(var(--ty) * var(--conv, 0) + (1 - var(--e, 0)) * var(--person-rise, 40px)),
+      0
+    )
+    scale(calc(1 - 0.93 * var(--conv, 0)));
+}
+
+/*
+ * Non-converging people.
+ */
+
+.hero-person[data-y="0"] {
+  transform: translate3d(
+      0,
+      calc(
+        (1 - var(--e, 0)) * var(--person-rise, 40px) + var(--others, 0) * var(--person-drift, 26px)
+      ),
+      0
+    )
+    scale(calc(1 - 0.05 * var(--others, 0)));
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.hero-header {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  z-index: 30;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  padding: 28px 44px;
+
+  color: #ffffff;
+}
+
+.hero-header__logo {
+  display: block;
+
+  width: 29px;
+  height: 45px;
+
+  flex: 0 0 auto;
+
+  text-decoration: none;
+}
+
+.hero-header__logo-mark {
+  display: block;
+
+  width: 29px;
+  height: 45px;
+
+  background: color-mix(in oklab, #ffffff calc(var(--hl, 1) * 100%), #ff003f);
+
+  -webkit-mask: url("/assets/mark2.png") center / contain no-repeat;
+  mask: url("/assets/mark2.png") center / contain no-repeat;
+}
+
+.hero-header__actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+/* ============================================================
+   CITY SELECTOR
+   ============================================================ */
+
+.hero-city-picker {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.hero-city {
+  min-height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 0 18px;
+
+  border: 1px solid color-mix(in oklab, #ffffff calc(var(--hl, 1) * 92%), rgba(21, 16, 14, 0.24));
+
+  border-radius: 999px;
+  background: transparent;
+
+  color: color-mix(in oklab, #ffffff calc(var(--hl, 1) * 100%), #15100e);
+
+  font-family: Archivo, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.hero-city__dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: color-mix(in oklab, #c8cd02 calc(var(--hl, 1) * 100%), #ff003f);
+
+  transition: background-color 120ms linear;
+}
+
+.hero-city__label {
+  line-height: 1;
+}
+
+.hero-city__arrow {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+
+  margin-left: 1px;
+  margin-top: -3px;
+
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+
+  transform: rotate(45deg);
+  opacity: 0.72;
+
+  transition:
+    transform 160ms ease,
+    margin-top 160ms ease;
+}
+
+.hero-city.is-open .hero-city__arrow {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+
+.hero-city__dropdown {
+  position: absolute;
+  top: calc(100% + 9px);
+  right: 0;
+
+  width: 210px;
+  padding: 7px;
+
+  border: 1px solid rgba(21, 16, 14, 0.08);
+  border-radius: 18px;
+  background: #f4ebe5;
+  box-shadow: 0 18px 45px rgba(21, 16, 14, 0.14);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.98);
+  transform-origin: top right;
+
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease,
+    visibility 150ms ease;
+}
+
+.hero-city__dropdown.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.hero-city__option {
+  width: 100%;
+  min-height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 0 11px;
+  border: 0;
+  border-radius: 11px;
+
+  background: transparent;
+  color: #15100e;
+
+  font-family: Archivo, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.hero-city__option:hover {
+  background: rgba(21, 16, 14, 0.06);
+}
+
+.hero-city__option.is-selected {
+  background: #15100e;
+  color: #f4ebe5;
+}
+
+.hero-city__status {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.hero-city__status--live {
+  color: #ff003f;
+}
+
+.hero-city__status--soon {
+  color: rgba(21, 16, 14, 0.3);
+}
+
+.hero-city__option.is-selected .hero-city__status--live {
+  color: #c8cd02;
+}
+
+/* ============================================================
+   HEADER BUTTONS
+   ============================================================ */
+
+.hero-header__button {
+  min-height: 40px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 22px;
+
+  border-radius: 999px;
+
+  background: #c8cd02;
+
+  color: #15100e;
+
+  font-family: Archivo, "Helvetica Neue", Helvetica, sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.hero-header__button:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.94;
+}
+
+/* ============================================================
+   SCROLL CUE
+   ============================================================ */
+
+.hero-scroll-cue {
+  position: absolute;
+
+  right: 27px;
+  top: 50%;
+
+  z-index: 30;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 14px;
+
+  transform: translateY(-50%);
+
+  /*
+   * Exact prototype colour interpolation.
+   */
+  color: color-mix(in oklab, #ffffff calc(var(--hl, 1) * 100%), #1b1613);
+
+  font-family: Archivo, "Helvetica Neue", Helvetica, sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.34em;
+
+  text-transform: uppercase;
+
+  opacity: var(--cue, 1);
+
+  pointer-events: none;
+}
+
+.hero-scroll-cue__label {
+  writing-mode: vertical-rl;
+
+  text-orientation: mixed;
+}
+
+/*
+ * 54px track exactly as in the prototype.
+ */
+
+.hero-scroll-cue__track {
+  position: relative;
+
+  display: block;
+
+  width: 1px;
+  height: 54px;
+
+  overflow: hidden;
+
+  background: color-mix(in oklab, currentColor 24%, transparent);
+}
+
+.hero-scroll-cue__line {
+  position: absolute;
+
+  left: 0;
+  top: -54px;
+
+  display: block;
+
+  width: 1px;
+  height: 54px;
+
+  background: currentColor;
+
+  animation: ws-cue 2.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes ws-cue {
+  0% {
+    transform: translateY(0);
+  }
+
+  55% {
+    transform: translateY(54px);
+  }
+
+  100% {
+    transform: translateY(54px);
+  }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+.hero-people-world--mobile {
+  display: none;
+
+  --person-rise: 32px;
+  --person-drift: 20px;
+}
+
+@media (max-width: 700px) {
+  .hero-section {
+    height: 860vh;
+  }
+
+  .hero-city-world {
+    /*
+     * Mobile prototype uses the 900 x 1440 world.
+     *
+     * The city itself remains behind the people composition.
+     */
+    width: 900px;
+    height: 1440px;
+
+    margin-left: -450px;
+    margin-top: -720px;
+
+    transform: scale(var(--mobileSceneScale));
+  }
+
+  .hero-city-world__image {
+    width: 900px;
+    height: 1440px;
+
+    object-fit: cover;
+  }
+
+  /*
+   * Mobile prototype text is inside the 900 x 1440 world.
+   */
+
+  .hero-city-world__headline {
+    left: 52px;
+    top: 150px;
+
+    width: 796px;
+
+    font-size: 58px;
+
+    line-height: 1.05;
+  }
+
+  .hero-city-world__text-shadow {
+    left: 52px;
+    top: 75px;
+
+    width: 796px;
+    height: 360px;
+  }
+
+  .hero-people-world--desktop {
+    display: none;
+  }
+
+  .hero-people-world--mobile {
+    display: block;
+
+    width: 900px;
+    height: 1440px;
+
+    margin-left: -450px;
+    margin-top: -720px;
+
+    transform: scale(var(--mobilePeopleScale));
+
+    transform-origin: center center;
+  }
+
+  .hero-header {
+    padding: 20px 18px;
+  }
+
+  .hero-header__logo {
+    width: 24px;
+    height: 37px;
+  }
+
+  .hero-header__logo-mark {
+    width: 24px;
+    height: 37px;
+  }
+
+  .hero-header__actions {
+    gap: 7px;
+  }
+
+  .hero-city {
+    min-height: 36px;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+  }
+
+  .hero-city__dropdown {
+    width: 190px;
+  }
+
+  .hero-city__option {
+    min-height: 34px;
+    font-size: 12px;
+  }
+
+  .hero-header__button {
+    min-height: 36px;
+
+    padding: 0 15px;
+
+    font-size: 13px;
+  }
+
+  .hero-scroll-cue {
+    right: 13px;
+
+    font-size: 8px;
+  }
+}
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+  .hero-city {
+    padding-inline: 11px;
+
+    font-size: 12px;
+  }
+
+  .hero-header__button {
+    padding-inline: 12px;
+
+    font-size: 12px;
+  }
+
+  .hero-header__actions {
+    gap: 5px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue__line {
+    animation: none;
+  }
+
+  .hero-person,
+  .hero-city-world,
+  .hero-city-world__headline {
+    will-change: auto;
+  }
+}
+
+/* ============================================================
+   LATER STORY / MATCHING REVEAL
+   ============================================================ */
+
+.hero-story-text {
+  position: absolute;
+  z-index: 16;
+  margin: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hero-story-text--c2,
+.hero-story-text--c2b {
+  left: 50%;
+  top: 50%;
+  width: 780px;
+  margin-left: -656px;
+  margin-top: clamp(230px, calc(50vh - 234px), 278px);
+  color: #191512;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: 76px;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.hero-story-text--c2b {
+  margin-top: clamp(270px, calc(50vh - 194px), 318px);
+  width: 640px;
+}
+
+.hero-story-text--c3,
+.hero-story-text--c4 {
+  left: 50%;
+  top: 50%;
+  color: #fff;
+  font-family: "Archivo Black", Archivo, sans-serif;
+  font-size: 41px;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  width: 530px;
+  margin-left: -680px;
+  margin-top: -322px;
+}
+
+.hero-story-text--c4 {
+  margin-left: -720px;
+  margin-top: -88px;
+  width: 470px;
+  font-family: Archivo, sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.028em;
+}
+
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  padding: 0.05em 0.13em;
+  margin: 0 0.07em;
+  color: #15100e;
+  isolation: isolate;
+}
+
+.hero-highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #c8cd02;
+  clip-path: polygon(
+    2% 40%,
+    13% 5%,
+    28% 23%,
+    45% 0%,
+    59% 21%,
+    77% 4%,
+    89% 27%,
+    100% 45%,
+    92% 71%,
+    99% 93%,
+    77% 84%,
+    61% 100%,
+    45% 81%,
+    27% 96%,
+    15% 75%,
+    0% 67%
+  );
+}
+
+.hero-story-text--c2b .hero-highlight::before {
+  clip-path: polygon(
+    6% 21%,
+    25% 2%,
+    41% 17%,
+    56% 0%,
+    73% 14%,
+    91% 5%,
+    99% 31%,
+    87% 50%,
+    100% 71%,
+    83% 89%,
+    63% 78%,
+    47% 97%,
+    29% 84%,
+    11% 95%,
+    1% 68%,
+    10% 44%
+  );
+}
+
+.hero-story-text--c3 .hero-highlight::before {
+  clip-path: polygon(
+    4% 31%,
+    21% 7%,
+    39% 25%,
+    51% 1%,
+    67% 23%,
+    85% 9%,
+    97% 35%,
+    85% 57%,
+    99% 79%,
+    73% 91%,
+    55% 73%,
+    41% 99%,
+    23% 79%,
+    7% 89%,
+    0% 57%
+  );
+}
+
+.hero-story-text--c4 .hero-highlight::before {
+  clip-path: polygon(
+    3% 45%,
+    15% 11%,
+    33% 27%,
+    47% 3%,
+    61% 25%,
+    79% 7%,
+    93% 31%,
+    100% 53%,
+    89% 75%,
+    97% 97%,
+    71% 85%,
+    53% 100%,
+    37% 79%,
+    19% 93%,
+    7% 69%
+  );
+}
+
+.hero-later-world {
+  position: absolute;
+  z-index: 14;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.hero-later-world--desktop {
+  width: 1536px;
+  height: 1024px;
+  margin-left: -768px;
+  margin-top: -512px;
+  transform: scale(var(--desktopPeopleScale));
+}
+
+.hero-later-world--mobile {
+  display: none;
+}
+
+.hero-later-world__dot {
+  position: absolute;
+  left: 378.5px;
+  top: 861.5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #17120f;
+  will-change: opacity;
+}
+
+.hero-later-world__dot-trail {
+  position: absolute;
+  left: 249px;
+  top: 787.5px;
+  width: 289px;
+  height: 178px;
+  transform-origin: 50% 50%;
+  will-change: opacity, transform;
+}
+
+.hero-later-world__trail {
+  position: absolute;
+  inset: 0;
+  right: auto;
+  bottom: auto;
+  width: 1536px;
+  height: 1024px;
+  opacity: 0;
+  -webkit-mask-image: radial-gradient(
+    circle 1150px at 393.5px 876.5px,
+    #000 calc(var(--draw, 0) * 113% - 13%),
+    rgba(0, 0, 0, 0) calc(var(--draw, 0) * 113%)
+  );
+  mask-image: radial-gradient(
+    circle 1150px at 393.5px 876.5px,
+    #000 calc(var(--draw, 0) * 113% - 13%),
+    rgba(0, 0, 0, 0) calc(var(--draw, 0) * 113%)
+  );
+  will-change: opacity;
+}
+
+.hero-later-world__trail img {
+  position: absolute;
+  left: 441px;
+  top: 315px;
+  width: 865px;
+  height: 493px;
+  max-width: none;
+}
+
+.hero-later-figure,
+.hero-host {
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+
+.hero-later-figure {
+  max-width: none;
+}
+
+.hero-host {
+  position: absolute;
+  left: 345px;
+  top: 552px;
+  width: 97px;
+  height: 354px;
+}
+
+.hero-host img:first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 78px;
+  height: 99px;
+  max-width: none;
+}
+
+.hero-host img:last-child {
+  position: absolute;
+  left: 0;
+  top: 58px;
+  width: 97px;
+  height: 296px;
+  max-width: none;
+}
+
+@media (max-width: 700px) {
+  .hero-story-text--c2,
+  .hero-story-text--c2b {
+    left: 50%;
+    top: 50%;
+    width: 800px;
+    margin-left: -398px;
+    margin-top: clamp(300px, calc(50vh - 320px), 400px);
+    font-size: 58px;
+    line-height: 1.2;
+  }
+
+  .hero-story-text--c2b {
+    margin-top: clamp(335px, calc(50vh - 285px), 435px);
+  }
+
+  .hero-story-text--c3,
+  .hero-story-text--c4 {
+    left: 50%;
+    top: 50%;
+    width: 800px;
+    margin-left: -398px;
+    margin-top: -510px;
+    font-size: 58px;
+    line-height: 1.2;
+  }
+
+  .hero-story-text--c4 {
+    margin-top: 455px;
+    width: 760px;
+    font-family: Archivo, sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.26;
+  }
+
+  .hero-later-world--desktop {
+    display: none;
+  }
+
+  .hero-later-world--mobile {
+    display: block;
+    width: 900px;
+    height: 1440px;
+    margin-left: -450px;
+    margin-top: -720px;
+    transform: scale(var(--mobilePeopleScale));
+  }
+
+  .hero-later-world--mobile .hero-later-world__dot {
+    left: 129.5px;
+    top: 546.5px;
+  }
+
+  .hero-later-world--mobile .hero-later-world__dot-trail {
+    left: 0;
+    top: 472.5px;
+    transform-origin: 50% 50%;
+  }
+
+  .hero-later-world--mobile .hero-later-world__trail {
+    width: 1057px;
+    height: 650px;
+    left: 52px;
+    top: 613px;
+    right: auto;
+    bottom: auto;
+    -webkit-mask-image: radial-gradient(
+      circle 1150px at 144.5px 561.5px,
+      #000 calc(var(--draw, 0) * 113% - 13%),
+      rgba(0, 0, 0, 0) calc(var(--draw, 0) * 113%)
+    );
+    mask-image: radial-gradient(
+      circle 1150px at 144.5px 561.5px,
+      #000 calc(var(--draw, 0) * 113% - 13%),
+      rgba(0, 0, 0, 0) calc(var(--draw, 0) * 113%)
+    );
+  }
+
+  .hero-later-world--mobile .hero-later-world__trail img {
+    left: 192px;
+    top: 0;
+  }
+
+  .hero-later-world--mobile .hero-host {
+    left: 96px;
+    top: 237px;
+  }
+}

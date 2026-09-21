@@ -1,0 +1,112 @@
+.footer {
+  margin-top: $space-24;
+
+  border-top: 1px solid $color-border;
+
+  background: $color-surface;
+
+  padding-top: $space-16;
+  padding-bottom: $space-8;
+}
+
+/* MAIN GRID */
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $space-20;
+
+}
+
+/* BRAND */
+.footer__brand {
+  max-width: 340px;
+}
+
+.footer__logo {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  letter-spacing: -0.01em;
+}
+
+.footer__tagline {
+  margin-top: $space-3;
+
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+}
+
+/* SOCIAL LINKS */
+
+.footer__social {
+  margin-top: $space-5;
+  display: flex;
+  gap: $space-5;
+}
+
+.footer__social a {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  text-decoration: none;
+
+  @include transition-colors;
+}
+
+.footer__social a:hover {
+  color: $color-primary;
+}
+
+/* NAVIGATION */
+.footer__nav {
+  display: flex;
+  gap: $space-20;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  min-width: 160px;
+
+}
+
+.footer__column h4 {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+/* LINKS */
+.footer__column button {
+  background: none;
+
+  border: none;
+
+  padding: 0;
+
+  text-align: left;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+
+  cursor: pointer;
+
+  @include transition-colors;
+
+}
+
+.footer__column button:hover {
+  color: $color-primary;
+}
+
+/* BOTTOM BAR */
+.footer__bottom {
+  margin-top: $space-12;
+  padding-top: $space-6;
+  border-top: 1px solid $color-border;
+
+  text-align: center;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+}

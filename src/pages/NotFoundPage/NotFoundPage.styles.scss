@@ -1,0 +1,23 @@
+.not-found {
+  min-height: 100vh;
+  text-align: center;
+
+  @include flex-center;
+
+  &__content {
+    align-items: center;
+  }
+
+  &__code {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+
+    color: $color-text-primary;
+  }
+
+  &__message {
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+  }
+}

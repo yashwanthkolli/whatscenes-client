@@ -1,0 +1,128 @@
+.date-input {
+  width: 100%;
+}
+
+.date-input__fields {
+  display: flex;
+  align-items: baseline;
+
+  gap: 10px;
+}
+
+.date-input__fields input {
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: $color-text-primary;
+
+  font-family: $font-family-primary;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+
+  text-align: center;
+
+  appearance: none;
+
+  transition: opacity 180ms ease;
+
+  &::placeholder {
+    color: rgba($color-text-primary, 0.3);
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.date-input__fields input:first-child {
+  width: 48px;
+}
+
+.date-input__fields input:nth-of-type(2) {
+  width: 52px;
+}
+
+.date-input__fields input:last-child {
+  width: 78px;
+}
+
+.date-input__separator {
+  color: rgba($color-text-primary, 0.28);
+
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.date-input__line {
+  width: 100%;
+  height: 2px;
+
+  margin-top: 12px;
+
+  background: rgba($color-text-primary, 0.22);
+
+  transition: background-color 180ms ease;
+}
+
+.date-input:focus-within .date-input__line {
+  background: $color-primary;
+}
+
+.date-input--error .date-input__line {
+  background: $color-error;
+}
+
+.date-input--disabled {
+  opacity: 0.45;
+}
+
+.date-input__error {
+  margin-top: 10px;
+
+  color: $color-error;
+
+  font-family: $font-family-primary;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .date-input__fields {
+    gap: 8px;
+  }
+
+  .date-input__fields input {
+    font-size: 24px;
+  }
+
+  .date-input__fields input:first-child {
+    width: 42px;
+  }
+
+  .date-input__fields input:nth-of-type(2) {
+    width: 46px;
+  }
+
+  .date-input__fields input:last-child {
+    width: 70px;
+  }
+
+  .date-input__separator {
+    font-size: 22px;
+  }
+
+  .date-input__line {
+    margin-top: 10px;
+  }
+}

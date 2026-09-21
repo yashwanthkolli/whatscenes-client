@@ -1,0 +1,31 @@
+@use "../tokens" as *;
+
+@mixin transition-base {
+  transition-duration: $duration-normal;
+  transition-timing-function: $ease-standard;
+}
+
+@mixin transition-fast {
+  transition-duration: $duration-fast;
+  transition-timing-function: $ease-standard;
+}
+
+@mixin transition-slow {
+  transition-duration: $duration-slow;
+  transition-timing-function: $ease-standard;
+}
+
+@mixin transition-opacity {
+  transition: opacity $duration-fast $ease-standard;
+}
+
+@mixin transition-transform {
+  transition: transform $duration-fast $ease-standard;
+}
+
+@mixin transition-colors {
+  transition:
+    background-color $duration-slow $ease-standard,
+    color $duration-slow $ease-standard,
+    border-color $duration-slow $ease-standard;
+}

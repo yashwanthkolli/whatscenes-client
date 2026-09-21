@@ -1,0 +1,16 @@
+.event-cta {
+  padding: $space-8;
+  position: sticky;
+  bottom: 16px;
+
+  &__price {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__helper {
+    font-size: $font-size-xs;
+    opacity: 0.6;
+    text-align: center;
+  }
+}

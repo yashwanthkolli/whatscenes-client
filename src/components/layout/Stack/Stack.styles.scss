@@ -1,0 +1,20 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+
+  &--sm {
+    gap: $space-2;
+  }
+
+  &--md {
+    gap: $space-4;
+  }
+
+  &--lg {
+    gap: $space-8;
+  }
+
+  &--xl {
+    gap: $space-12;
+  }
+}

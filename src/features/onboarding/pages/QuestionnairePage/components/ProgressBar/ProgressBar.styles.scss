@@ -1,0 +1,25 @@
+.progress-bar {
+  position: absolute;
+  left: 0;
+  top: 80px;
+
+  width: 100vw;
+  height: 6px;
+
+  background: rgba(21, 16, 14, 0.13);
+
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  width: 0;
+  height: 100%;
+
+  background: #ff003f;
+
+  transition: width 0.6s cubic-bezier(0.16, 0.84, 0.24, 1);
+}
+
+.progress-bar__text {
+  display: none;
+}

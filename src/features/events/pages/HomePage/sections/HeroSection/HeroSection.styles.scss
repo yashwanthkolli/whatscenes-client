@@ -1,0 +1,198 @@
+.hero-section {
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding-top: $space-24;
+  padding-bottom: $space-24;
+
+  background:
+    $gradient-primary,
+    $color-background;
+
+}
+
+
+/* HERO LAYOUT */
+
+.hero {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: $space-16;
+
+}
+
+
+/* HERO CONTENT */
+
+.hero__content {
+
+  max-width: 520px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: $space-6;
+
+}
+
+.hero__headline {
+
+  font-size: $font-size-5xl;
+
+  font-weight: $font-weight-bold;
+
+  line-height: $line-height-tight;
+
+  color: $color-text-primary;
+
+}
+
+.hero__subtitle {
+
+  font-size: $font-size-lg;
+
+  color: $color-text-secondary;
+
+  line-height: $line-height-normal;
+
+}
+
+.hero__actions {
+
+  display: flex;
+
+  gap: $space-4;
+
+}
+
+
+/* HERO VISUAL */
+
+.hero__visual {
+
+  position: relative;
+
+  height: 420px;
+
+}
+
+
+/* HERO CARD */
+
+.hero-card {
+
+  position: absolute;
+
+  width: 220px;
+
+  padding: $space-5;
+
+  @include glass-surface;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: $space-2;
+
+  will-change: transform;
+
+  h4 {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+  }
+
+  &--info {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+}
+
+
+/* CARD POSITIONS */
+
+.hero-card--1 {
+  top: 10%;
+  left: 35%;
+}
+
+.hero-card--2 {
+  top: 55%;
+  left: 0;
+}
+
+.hero-card--3 {
+  top: 60%;
+  right: 0;
+}
+
+
+/* RESPONSIVE */
+
+@include respond-down(md) {
+
+  .hero {
+
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__visual {
+
+    height: auto;
+
+    margin-top: $space-12;
+
+    display: grid;
+
+    gap: $space-4;
+
+  }
+
+  .hero-card {
+
+    position: static;
+
+    width: 100%;
+
+  }
+
+}
+
+.hero__glow {
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(167,139,250,0.25),
+    transparent 70%
+  );
+
+  filter: blur(120px);
+
+  transform: translate(-50%, -50%);
+
+  z-index: 0;
+
+}

@@ -1,0 +1,35 @@
+.single-select-badges {
+  &__header {
+    text-align: center;
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-2;
+  }
+
+  &__option {
+    cursor: pointer;
+
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-sm;
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &.is-selected {
+      box-shadow:
+        0 0 0 2px rgba($color-primary, 0.2),
+        $shadow-md;
+    }
+  }
+}

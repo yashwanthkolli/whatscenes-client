@@ -1,0 +1,18 @@
+.page-header {
+  margin-bottom: $space-8;
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-primary;
+  }
+
+  &__description {
+    margin-top: $space-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+  }
+}

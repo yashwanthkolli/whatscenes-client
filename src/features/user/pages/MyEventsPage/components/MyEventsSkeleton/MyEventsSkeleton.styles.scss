@@ -1,0 +1,27 @@
+.my-events-skeleton {
+  &__item {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr) auto;
+    gap: 22px;
+    align-items: center;
+
+    min-height: 88px;
+
+    border-top: 1px solid rgba(21, 16, 14, 0.13);
+  }
+
+  &__date,
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  @media (max-width: 767px) {
+    &__item {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 22px 0;
+    }
+  }
+}

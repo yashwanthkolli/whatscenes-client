@@ -1,0 +1,92 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+  }
+
+  &__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    background: $color-surface;
+    color: $color-text-primary;
+
+    outline: none;
+
+    @include transition-colors;
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+
+    &--left {
+      left: $space-3;
+    }
+
+    &--right {
+      right: $space-3;
+    }
+  }
+
+  &__message {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+  }
+
+  /* Sizes */
+
+  &--sm {
+    .input-field__input {
+      padding: $space-2 $space-3;
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--md {
+    .input-field__input {
+      padding: $space-3 $space-4;
+      font-size: $font-size-md;
+    }
+  }
+
+  &--lg {
+    .input-field__input {
+      padding: $space-4 $space-5;
+      font-size: $font-size-lg;
+    }
+  }
+
+  /* Error state */
+
+  &.is-error {
+    .input-field__input {
+      border-color: $color-error;
+    }
+
+    .input-field__message {
+      color: $color-error;
+    }
+  }
+
+  &.is-full {
+    width: 100%;
+  }
+}

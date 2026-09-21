@@ -1,0 +1,19 @@
+@use "../tokens" as *;
+
+@mixin fade-in($duration: $duration-normal) {
+  animation: fade-in $duration $ease-standard forwards;
+}
+
+@mixin slide-up($duration: $duration-normal) {
+  animation: slide-up $duration $ease-standard forwards;
+}
+
+@mixin scale-in($duration: $duration-fast) {
+  animation: scale-in $duration $ease-standard forwards;
+}
+
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}

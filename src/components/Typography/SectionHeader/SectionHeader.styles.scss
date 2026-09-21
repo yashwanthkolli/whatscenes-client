@@ -1,0 +1,31 @@
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  // margin-bottom: $space-6;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-primary;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+
+    color: $color-text-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+}
